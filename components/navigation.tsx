@@ -13,9 +13,9 @@ export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50">
-      <div className="px-8 md:px-16 lg:px-24 py-8 flex items-center justify-between">
-        <a href="#" className="text-sm text-foreground font-medium">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm">
+      <div className="px-8 md:px-16 lg:px-24 py-6 flex items-center justify-between">
+        <a href="#" className="text-sm text-foreground tracking-wide">
           Poulami Mukherjee
         </a>
         
@@ -25,7 +25,7 @@ export function Navigation() {
             <a 
               key={item.href}
               href={item.href} 
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              className="text-sm text-muted-foreground hover:text-accent transition-colors"
             >
               {item.label}
             </a>
@@ -45,12 +45,19 @@ export function Navigation() {
       {/* Mobile Navigation */}
       {isOpen && (
         <div className="md:hidden fixed inset-0 bg-background z-40 flex flex-col justify-center px-8">
+          <button 
+            className="absolute top-6 right-8 text-sm text-foreground"
+            onClick={() => setIsOpen(false)}
+            aria-label="Close menu"
+          >
+            Close
+          </button>
           <div className="flex flex-col gap-8">
             {navItems.map((item) => (
               <a 
                 key={item.href}
                 href={item.href} 
-                className="text-3xl font-light text-foreground hover:text-muted-foreground transition-colors"
+                className="font-serif text-3xl text-foreground hover:text-accent transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 {item.label}

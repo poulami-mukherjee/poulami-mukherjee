@@ -12,7 +12,7 @@ export default function Home() {
     <div className="min-h-screen bg-background text-foreground">
       <JsonLd />
       <Navigation />
-      <main className="pt-16">
+      <main>
         <Hero />
         <About />
         <Services />
