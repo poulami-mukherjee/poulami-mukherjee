@@ -1,54 +1,33 @@
-"use client"
-
-import { useState, useEffect } from "react"
-
-const phrases = [
-  "help startups ship faster",
-  "make systems reliable", 
-  "lead engineering teams",
-  "solve hard problems",
-]
-
 export function Hero() {
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [displayText, setDisplayText] = useState("")
-  const [isDeleting, setIsDeleting] = useState(false)
-  
-  useEffect(() => {
-    const phrase = phrases[currentIndex]
-    const speed = isDeleting ? 25 : 50
-    
-    if (!isDeleting && displayText === phrase) {
-      const timeout = setTimeout(() => setIsDeleting(true), 2500)
-      return () => clearTimeout(timeout)
-    }
-    
-    if (isDeleting && displayText === "") {
-      setIsDeleting(false)
-      setCurrentIndex((prev) => (prev + 1) % phrases.length)
-      return
-    }
-    
-    const timeout = setTimeout(() => {
-      setDisplayText(
-        isDeleting 
-          ? phrase.substring(0, displayText.length - 1)
-          : phrase.substring(0, displayText.length + 1)
-      )
-    }, speed)
-    
-    return () => clearTimeout(timeout)
-  }, [displayText, isDeleting, currentIndex])
-
   return (
-    <section className="min-h-screen flex flex-col justify-center px-8 md:px-16 lg:px-24">
-      <div className="max-w-2xl">
-        <h1 className="text-3xl md:text-4xl lg:text-5xl font-light leading-snug tracking-tight">
+    <section className="h-screen flex flex-col justify-center px-8 md:px-16 lg:px-24">
+      <div className="max-w-3xl">
+        <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-6">
+          Software Engineer · Architect · Consultant
+        </p>
+        
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium leading-tight tracking-tight mb-8">
           Hi, I&apos;m Poulami.
-          <br />
-          <span className="text-muted-foreground">I {displayText}</span>
-          <span className="text-accent animate-pulse">|</span>
         </h1>
+        
+        <p className="text-xl md:text-2xl leading-relaxed text-foreground/90 mb-4">
+          Technology, when done right, doesn&apos;t just look good — it brings in leads, converts clients, and genuinely pays for itself.
+        </p>
+        
+        <p className="text-lg md:text-xl italic text-muted-foreground mb-10">
+          Most businesses aren&apos;t there yet. That&apos;s exactly where I come in.
+        </p>
+        
+        <a 
+          href="#contact" 
+          className="inline-block px-8 py-4 bg-foreground text-background font-medium text-sm tracking-wide hover:bg-foreground/90 transition-colors"
+        >
+          Let&apos;s talk &rarr;
+        </a>
+        
+        <p className="mt-12 text-xs text-muted-foreground tracking-wide">
+          8+ years experience · 5 years at Amazon · B.Tech CSE (ML) · US · Europe · India · LinkedIn Top Voice 2023
+        </p>
       </div>
     </section>
   )
